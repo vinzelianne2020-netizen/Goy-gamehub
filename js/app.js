@@ -205,8 +205,20 @@ function checkersCaptures(r,c,board){
  const piece=board[r][c],moves=[];
  if(!piece)return moves;
  for(const [dr,dc] of checkersDirections(piece)){
-  const mr=r+dr,mc=c+dc,tr=r+dr*2,tc=c+dc*2;
-  if(tr>=0&&tr<8&&tc>=0&&tc<8&&board[mr]?.[mc]&&checkersColor(board[mr][mc])!==checkersColor(piece)&&board[tr][tc]===null)moves.push({r:tr,c:tc,capture:[mr,mc]});
+  let distance=1,enemy=null;
+  while(true){
+   const tr=r+dr*distance,tc=c+dc*distance;
+   if(tr<0||tr>=8||tc<0||tc>=8)break;
+   const target=board[tr][tc];
+   if(!enemy){
+    if(!target){distance++;continue}
+    if(checkersColor(target)===checkersColor(piece))break;
+    enemy=[tr,tc];distance++;continue;
+   }
+   if(target)break;
+   moves.push({r:tr,c:tc,capture:enemy});
+   distance++;
+  }
  }
  return moves;
 }
@@ -221,8 +233,11 @@ function checkersMoves(r,c,board){
  const piece=board[r][c],moves=[];
  if(!piece)return moves;
  for(const [dr,dc] of checkersDirections(piece)){
-  const tr=r+dr,tc=c+dc;
-  if(tr>=0&&tr<8&&tc>=0&&tc<8&&board[tr][tc]===null)moves.push({r:tr,c:tc});
+  for(let distance=1;distance<8;distance++){
+   const tr=r+dr*distance,tc=c+dc*distance;
+   if(tr<0||tr>=8||tc<0||tc>=8||board[tr][tc]!==null)break;
+   moves.push({r:tr,c:tc});
+  }
  }
  return moves;
 }
@@ -274,6 +289,7 @@ function clickCheckersSquare(r,c){
    if(move.capture&&checkersCaptures(r,c,board).length){checkersState.lastCapture={r,c};checkersState.selected={r,c};renderCheckers();showCheckersMoves(r,c);return}
    checkersState.lastCapture=null;checkersState.selected=null;checkersState.turn=checkersState.turn==='w'?'b':'w';renderCheckers();return;
   }
+  if(checkersState.lastCapture)return;
  }
  if(checkersColor(piece)===checkersState.turn){
   showCheckersMoves(r,c);renderCheckers();showCheckersMoves(r,c);
