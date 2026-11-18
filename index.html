@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Snakes &amp; Ladders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=12"></head><body>
+<main id="landing" class="landing">
+ <nav class="topbar" aria-label="Main navigation">
+  <div class="brand"><span class="brand-mark">S&amp;L</span><span>GameHub</span></div>
+  <button class="profile" type="button" aria-label="Player profile">Player <span>1</span></button>
+ </nav>
+ <section class="hero">
+  <div>
+   <p class="eyebrow">PILI UG DULA</p>
+   <h1>Ready to play?</h1>
+   <p class="hero-copy">Choose a game and start an instant match with friends or the computer.</p>
+  </div>
+  <div class="hero-art" aria-hidden="true"><div class="art-die">⚄</div><div class="art-pawn"></div></div>
+ </section>
+ <section class="games" aria-labelledby="games-title">
+  <div class="section-heading"><h2 id="games-title">Mga Dula</h2><span>5 games available</span></div>
+  <div class="game-grid">
+   <button class="game-card snake-card" id="play-snakes" type="button">
+    <div class="card-preview"><div class="mini-board" aria-hidden="true"></div></div>
+    <div class="card-body"><div><h3>Snakes &amp; Ladders</h3><p>1–4 players</p></div><span class="play-arrow" aria-hidden="true">›</span></div>
+   </button>
+   <button class="game-card chess-card" id="play-chess" type="button">
+    <div class="card-preview"><div class="mini-chess" aria-hidden="true">♞</div></div>
+    <div class="card-body"><div><h3>Advance Chess</h3><p>2 players</p></div><span class="play-arrow" aria-hidden="true">›</span></div>
+   </button>
+   <button class="game-card checkers-card" id="play-checkers" type="button">
+    <div class="card-preview"><div class="mini-checkers" aria-hidden="true"></div></div>
+    <div class="card-body"><div><h3>Checkers</h3><p>2 players</p></div><span class="play-arrow" aria-hidden="true">›</span></div>
+   </button>
+   <button class="game-card flappy-card" id="play-flappy" type="button">
+    <div class="card-preview"><div class="mini-flappy" aria-hidden="true"><span></span></div></div>
+    <div class="card-body"><div><h3>Flappy Goy</h3><p>Arcade · 1 player</p></div><span class="play-arrow" aria-hidden="true">›</span></div>
+   </button>
+   <button class="game-card goyman-card" id="play-goyman" type="button">
+    <div class="card-preview"><div class="mini-goyman" aria-hidden="true"><span></span></div></div>
+    <div class="card-body"><div><h3>Goyman</h3><p>Maze · 1 player</p></div><span class="play-arrow" aria-hidden="true">›</span></div>
+   </button>
+  </div>
+ </section>
+</main>
+<main id="chess" class="chess-game" hidden>
+ <div class="chess-top">
+  <button class="back" id="back-from-chess" type="button">← All games</button>
+  <div><p class="eyebrow">LOCAL MATCH</p><h1>Advance Chess</h1></div>
+  <button class="ghost" id="reset-chess" type="button">New game</button>
+ </div>
+ <section class="chess-layout">
+  <div class="chess-board-wrap">
+   <div id="chess-board" class="chess-board" aria-label="Chess board"></div>
+  </div>
+  <aside class="chess-side">
+   <div id="chess-status" class="chess-status">White's turn</div>
+   <div class="chess-player white-player"><span class="player-dot">W</span><div><b>White</b><small id="white-moves">0 moves</small></div></div>
+   <div class="chess-player black-player"><span class="player-dot">B</span><div><b>Black</b><small id="black-moves">0 moves</small></div></div>
+   <div class="captured"><b>Captured</b><p id="captured-pieces">None</p></div>
+  </aside>
+ </section>
+</main>
+ <main id="checkers" class="chess-game" hidden>
+  <div class="chess-top">
+   <button class="back" id="back-from-checkers" type="button">← All games</button>
+   <div><p class="eyebrow">LOCAL MATCH</p><h1>Checkers</h1></div>
+   <button class="ghost" id="reset-checkers" type="button">New game</button>
+  </div>
+  <section class="chess-layout">
+   <div class="chess-board-wrap"><div id="checkers-board" class="chess-board" aria-label="Checkers board"></div></div>
+   <aside class="chess-side">
+    <div id="checkers-status" class="chess-status">White's turn</div>
+    <div class="chess-player white-player"><span class="player-dot">W</span><div><b>White</b><small id="white-pieces">12 pieces</small></div></div>
+    <div class="chess-player black-player"><span class="player-dot">B</span><div><b>Black</b><small id="black-pieces">12 pieces</small></div></div>
+    <div class="captured"><b>Captured</b><p id="checkers-captured">None</p></div>
+   </aside>
+  </section>
+ </main>
+<main id="flappy" class="flappy-game" hidden>
+ <div class="flappy-top">
+  <button class="back" id="back-from-flappy" type="button">← All games</button>
+  <div><p class="eyebrow">POWER ARCADE</p><h1>Flappy Goy</h1></div>
+  <button class="ghost" id="flappy-pause" type="button">Pause</button>
+ </div>
+ <section class="flappy-layout">
+  <div class="flappy-canvas-wrap">
+   <canvas id="flappy-canvas" width="960" height="540" aria-label="Flappy Goy game"></canvas>
+   <div id="flappy-overlay" class="flappy-overlay">
+    <div class="flappy-logo">Flappy <span>Goy</span></div>
+    <p>Fly through the walls. Use powers wisely.</p>
+    <button id="flappy-start" class="go" type="button">Start flight</button>
+   </div>
+  </div>
+  <aside class="flappy-side">
+   <div class="score-card"><span>SCORE</span><strong id="flappy-score">0</strong><small id="flappy-best">Best 0</small></div>
+   <div class="power-grid">
+    <div class="power-button slow"><span class="power-icon">◷</span><div><b>Time Slow</b><small>Random pickup</small></div></div>
+    <div class="power-button dash"><span class="power-icon">➤</span><div><b>Dash</b><small>Random pickup</small></div></div>
+    <div class="power-button destroy"><span class="power-icon">✦</span><div><b>Destroy Wall</b><small><em id="destroy-count">5</em> walls left</small></div></div>
+    <div class="power-button gun"><span class="power-icon">⌖</span><div><b>Gun</b><small><em id="gun-count">3</em> shots left</small></div></div>
+   </div>
+   <p class="flappy-tip">Space / Tap to flap<br>Collect glowing power-ups in the gaps</p>
+  </aside>
+ </section>
+</main>
+<main id="goyman" class="goyman-game" hidden>
+ <div class="goyman-top">
+  <button class="back" id="back-from-goyman" type="button">← All games</button>
+  <div><p class="eyebrow">MAZE ARCADE</p><h1>Goyman</h1></div>
+  <button class="ghost" id="goyman-pause" type="button">Pause</button>
+ </div>
+ <section class="goyman-layout">
+  <div class="goyman-canvas-wrap">
+   <canvas id="goyman-canvas" width="630" height="690" aria-label="Goyman maze game"></canvas>
+   <div id="goyman-overlay" class="goyman-overlay">
+    <div class="goyman-logo">GOYMAN</div>
+    <p id="goyman-message">Eat every dot. Avoid the ghosts.</p>
+    <button id="goyman-start" class="go" type="button">Start game</button>
+   </div>
+  </div>
+  <aside class="goyman-side">
+   <div class="score-card"><span>SCORE</span><strong id="goyman-score">0</strong><small id="goyman-high">High 0</small></div>
+   <div class="goyman-lives"><b>LIVES</b><p id="goyman-lives">● ● ●</p></div>
+   <div class="goyman-status"><b>READY!</b><small id="goyman-status">Use arrows or swipe</small></div>
+  </aside>
+ </section>
+</main>
+<main id="setup" class="setup" hidden>
+ <button class="back" id="back-menu" type="button">← All games</button>
+ <div class="intro"><h1>Snakes &amp; Ladders</h1><p class="lead">Race to square 100. Ladders lift you up, snakes drag you down.</p>
+ <form id="form">
+  <fieldset><legend>Players</legend><div class="seg" id="count" role="group" aria-label="Number of players"></div><div id="rows"></div></fieldset>
+  <fieldset><legend>Board</legend><div id="boards" class="boards"></div></fieldset>
+  <fieldset><legend>Rules</legend>
+   <label class="chk"><input type="checkbox" id="exact"> Need an exact roll to finish</label>
+   <label class="chk"><input type="checkbox" id="again"> Roll again on a 6</label></fieldset>
+  <button class="go" type="submit">Start game</button>
+ </form></div>
+ <div class="preview"><div class="frame"><canvas id="pv" aria-label="Board preview"></canvas></div><p id="pvd"></p></div>
+</main>
+<main id="game" class="game" hidden>
+ <section class="boardwrap"><div class="frame" id="frame"><canvas id="bd" aria-label="Game board"></canvas><div id="banner" role="status"></div></div></section>
+ <aside class="side">
+  <div id="plist"></div>
+  <div class="dock"><div class="die" id="die" aria-hidden="true"></div><button id="roll" class="go">Roll dice</button></div>
+  <p class="hint">Press Space to roll</p>
+  <ol id="log" aria-live="polite"></ol>
+  <div class="row"><button id="mute" class="ghost">Sound on</button><button id="quit" class="ghost">Menu</button></div>
+ </aside>
+</main>
+<dialog id="win"></dialog><canvas id="cf" aria-hidden="true"></canvas>
+<script src="js/board.js"></script><script src="js/fallback-data.js"></script><script src="js/app.js?v=12"></script>
+</body></html>

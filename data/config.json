@@ -1,0 +1,3 @@
+{"colors":[{"name":"Coral","hex":"#ff5d6c"},{"name":"Sky","hex":"#3fb8ff"},{"name":"Saffron","hex":"#ffc13b"},{"name":"Violet","hex":"#a086ff"}],
+"names":["Player 1","Player 2","Player 3","Player 4"],"cpuNames":["Bot Ada","Bot Linus","Bot Grace","Bot Alan"],
+"rules":{"exact":false,"again":true}}
